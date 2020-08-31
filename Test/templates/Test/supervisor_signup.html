@@ -1,0 +1,12 @@
+{% block content %}
+    <div class="row">
+            <h2> Sign up as a {{ access }}</h2>
+            <form method="post">
+            {% csrf_token %}
+            
+            {{ user_form.as_p }}
+            {{ supervisor_form.as_p}}
+            <input type="submit" value="Submit">
+            </form>
+    </div>
+{% endblock%}

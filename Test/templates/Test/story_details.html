@@ -1,0 +1,15 @@
+<p><h2> INSTRUCTIONS </h2></p>
+<ul> 
+    <li> Test is going to last for 5 minutes</li>
+    <li>Read and understand this essay before you begin the test</li>
+    <li>Select the option that </li>
+    <li> Attempt all questions </li> 
+</ul>
+{%block content%}
+{% if story %}
+    <p> {{ story|upper }}</p>
+    {{story.topic}}<br>
+    {{story.text}}<br>
+    <a href="{% url 'Test:questions' story.id %}"> Questions</a>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% block title %} Login {% endblock %}
+{% block content %}
+{% if form.errors %}
+    <p> Please try again. Email and password did not match</p>
+{% endif %}
+{% if next %}
+    {% if user.is_authenticated %}
+        <p> Please login with an account that has permissions to view this page</p>
+    {% else %}
+        <p> Login to view this page </p>
+    {% endif %}
+{% endif %}
+<form method="post" >
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Login">
+</form>
+<a href="{% url 'Test:signup' %}"> Signup </a>
+<p><a href="{% url 'Test:password_reset'%}"> Forgotten password ?</a></p>
+{% endblock %}

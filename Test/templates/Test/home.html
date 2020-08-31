@@ -1,0 +1,14 @@
+{% block title %} Homepage {% endblock %}
+{% block content %}
+{% load static%}
+{% if story_list %}
+    
+    <p><h3> Select the story you want to be tested on </h3></p>
+    {% for story in story_list %}
+    <p><a href="{% url 'Test:story_details' pk=story.id %}">{{story.topic|upper}}</a></p>
+    {% endfor %}
+    
+{% endif %}    
+{% endblock %}
+<a href="{% url 'Test:login'%}"> Login</a><br>
+<a href="{% url 'Test:profile' %}">Profile</a>

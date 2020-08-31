@@ -1,0 +1,13 @@
+{% block content%}
+{% for question in question_list %}
+    <p>{{ question.question_text }}</p>
+    <form action="{% url 'Test:results' question.id %}" method="post">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+        <input type="radio" name="{{question.id}}" id="{{choice.id}}" value="{{choice.id}}">
+        <label for="{{choice.id}}" >{{choice.choice_text}} </label><br>
+        {% endfor%}
+        <button type="submit">Submit</button>
+    </form>
+{% endfor %}
+{% endblock %}

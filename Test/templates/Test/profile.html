@@ -1,0 +1,15 @@
+{%block content%}
+{% if supervisor %}
+    <p> {{ supervisor|upper }}</p>
+    <p>{{ supervisor.user }}</p>
+    <p> Stories created by {{ supervisor}}</p>
+    {% for story in supervisor.story_set.all %}
+    <a href="{% url 'Test:edit_story' story.id %}"> Edit {{ story.topic}}</a><br>
+    <p> Create questions for {{story}}</p>
+    <a href="{% url 'Test:create_questions' story.id %}"> Create questions </a><br>
+
+    {% endfor %}
+{% endif %}
+{% endblock %}
+<a href="{% url 'Test:create_story' %}">Create Story</a><br>
+<a href="{% url 'Test:logout'%}">Logout</a>
